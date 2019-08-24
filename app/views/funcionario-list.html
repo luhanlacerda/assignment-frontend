@@ -1,0 +1,25 @@
+<div class="span6">
+  <table class="table table-striped table-condensed">
+    <thead>
+      <tr>
+        <th style="min-width: 80px;">Matricula</th>
+        <th style="min-width: 80px;">Nome</th>
+        <th style="min-width: 80px;">Data de contratação</th>
+        <th style="min-width: 80px;">Data de Nascimento</th>
+        <th style="width:20px;">&nbsp;</th>
+        <th style="width:20px;">&nbsp;</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr ng-repeat="f in funcionarios">
+        <td>{{ f.matricula }}</td>
+        <td>{{ f.nome }}</td>
+        <td>{{ f.dataDeContratacao }}</td>
+        <td>{{ f.dataDeNascimento }}</td>
+        <td><a ng-click="editFuncionario(f.matricula)" class="btn btn-small btn-primary">edit</a></td>
+        <td><a ng-click="deleteFuncionario(f.matricula)" class="btn btn-small btn-danger">delete</a></td>
+      </tr>
+    </tbody>
+  </table>
+  <a ng-click="createNewFuncionario()" class="btn btn-small">create new funcionario</a>
+</div>

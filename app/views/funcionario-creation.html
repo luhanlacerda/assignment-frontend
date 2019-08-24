@@ -1,0 +1,43 @@
+<div class="container">
+  <h1>Create a new Funcionario</h1>
+
+  <form novalidate="novalidate" class="form-horizontal">
+    <div class="control-group">
+      <label class="control-label" for="inputNome">Nome:</label>
+
+      <div class="controls">
+        <input type="text" id="inputNome" ng-model="funcionario.nome" placeholder="Nome" />
+      </div>
+    </div>
+    <div class="control-group">
+      <label class="control-label" for="inputDataDeNascimento">Data De Nascimento:</label>
+
+      <div class="controls">
+        <input type="date" id="inputDataDeNascimento" ng-model="funcionario.dataDeNascimento"
+          placeholder="Data de Nascimento" />
+      </div>
+    </div>
+    <div class="control-group">
+      <label class="control-label" for="inputDataDeContratacao">Data De Contratacao:</label>
+
+      <div class="controls">
+        <input type="date" id="inputDataDeContratacao" ng-model="funcionario.dataDeContratacao"
+          placeholder="Data de Contratacao" />
+      </div>
+    </div>
+    <div class="control-group">
+      <label class="control-label" for="inputEquipe">Equipe:</label>
+
+      <div class="controls">
+        <select name="repeatSelect" id="inputEquipe" ng-model="funcionario.equipe">
+          <option ng-repeat="e in equipe" value="{{e.id}}">{{e.nome}}</option>
+        </select>
+      </div>
+    </div>
+    <div class="control-group">
+      <div class="controls">
+        <a ng-click="createNewFuncionario()" class="btn btn-small btn-primary">create new funcionario</a>
+      </div>
+    </div>
+  </form>
+</div>
