@@ -7,7 +7,7 @@
 
             <div class="controls">
                 <select name="repeatSelect" id="inputFuncionario" ng-model="ferias.funcionario">
-                    <option ng-repeat="f in funcionario" value="{{f.id}}">{{f.nome}}</option>
+                    <option ng-repeat="f in funcionarios" value="{{f.id}}">{{f.nome}}</option>
                 </select>
             </div>
         </div>
@@ -15,7 +15,7 @@
             <label class="control-label" for="inputPeriodoInicial">Perido Inicial:</label>
 
             <div class="controls">
-                <input type="date" id="inputPeriodoInicial" ng-model="ferias.periodoInicial"
+                <input type="text" id="inputPeriodoInicial" ng-model="ferias.periodoInicial"
                     placeholder="Periodo Inicial" />
             </div>
         </div>
@@ -23,7 +23,7 @@
             <label class="control-label" for="inputPeriodoFinal">Perido Final:</label>
 
             <div class="controls">
-                <input type="date" id="inputPeriodoFinal" ng-model="ferias.periodoFinal" placeholder="Periodo Final" />
+                <input type="text" id="inputPeriodoFinal" ng-model="ferias.periodoFinal" placeholder="Periodo Final" />
             </div>
         </div>
         <div class="control-group">

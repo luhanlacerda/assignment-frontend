@@ -13,7 +13,7 @@
       <label class="control-label" for="inputDataDeNascimento">Data De Nascimento:</label>
 
       <div class="controls">
-        <input type="date" id="inputDataDeNascimento" ng-model="funcionario.dataDeNascimento"
+        <input type="text" id="inputDataDeNascimento" ng-model="funcionario.dataDeNascimento"
           placeholder="Data de Nascimento" />
       </div>
     </div>
@@ -21,7 +21,7 @@
       <label class="control-label" for="inputDataDeContratacao">Data De Contratacao:</label>
 
       <div class="controls">
-        <input type="date" id="inputDataDeContratacao" ng-model="funcionario.dataDeContratacao"
+        <input type="text" id="inputDataDeContratacao" ng-model="funcionario.dataDeContratacao"
           placeholder="Data de Contratacao" />
       </div>
     </div>
@@ -29,8 +29,8 @@
       <label class="control-label" for="inputEquipe">Equipe:</label>
 
       <div class="controls">
-        <select name="repeatSelect" id="inputEquipe" ng-model="funcionario.equipe">
-          <option ng-repeat="e in equipe" value="{{e.id}}">{{e.nome}}</option>
+        <select name="repeatSelect" id="inputEquipe" ng-model="funcionario.equipe.id">
+          <option ng-repeat="e in equipes" value="{{e.id}}">{{e.nome}}</option>
         </select>
       </div>
     </div>

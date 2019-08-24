@@ -64,7 +64,13 @@ app.controller('SigninCreationCtrl', ['$scope', 'SigninsFactory', '$location',
 
     /* callback for ng-click 'createNewSignin': */
     $scope.createNewSignin = function () {
-      SigninsFactory.create($scope.signin);
+      SigninsFactory.create($scope.signin).$promise
+        .then(function (res) {
+          $scope.signins = SigninsFactory.query();
+        })
+        .catch(function (err) {
+          alert("Falha ao salvar usuário!!!");
+        });
       $location.path('/signin-list');
     };
   }]);
@@ -97,9 +103,10 @@ app.controller('FuncionarioListCtrl', ['$scope', 'FuncionariosFactory', 'Funcion
     $scope.funcionarios = FuncionarioFactory.query();
   }]);
 
-app.controller('FuncionarioDetailCtrl', ['$scope', '$routeParams', 'FuncionarioFactory', '$location',
-  function ($scope, $routeParams, FuncionarioFactory, $location) {
+app.controller('FuncionarioDetailCtrl', ['$scope', '$routeParams', 'FuncionarioFactory', 'EquipesFactory', '$location',
+  function ($scope, $routeParams, FuncionarioFactory, EquipesFactory, $location) {
 
+    $scope.equipes = EquipesFactory.query();    
     /* callback for ng-click 'updateFuncionario': */
     $scope.updateFuncionario = function () {
       FuncionarioFactory.update($scope.funcionario);
@@ -114,10 +121,11 @@ app.controller('FuncionarioDetailCtrl', ['$scope', '$routeParams', 'FuncionarioF
     $scope.funcionario = FuncionarioFactory.show({ id: $routeParams.id });
   }]);
 
-app.controller('FuncionarioCreationCtrl', ['$scope', 'FuncionariosFactory', '$location',
-  function ($scope, FuncionariosFactory, $location) {
+app.controller('FuncionarioCreationCtrl', ['$scope', 'FuncionariosFactory', 'EquipesFactory', '$location',
+  function ($scope, FuncionariosFactory, EquipesFactory, $location) {
 
     /* callback for ng-click 'createNewFuncionario': */
+    $scope.equipes = EquipesFactory.query();
     $scope.createNewFuncionario = function () {
       FuncionariosFactory.create($scope.funcionario);
       $location.path('/funcionario-list');
@@ -207,12 +215,13 @@ app.controller('FeriasListCtrl', ['$scope', 'FeriassFactory', 'FeriasFactory', '
     $scope.feriass = FeriassFactory.query();
   }]);
 
-app.controller('FeriasDetailCtrl', ['$scope', '$routeParams', 'FeriasFactory', '$location',
-  function ($scope, $routeParams, FeriasFactory, $location) {
+app.controller('FeriasDetailCtrl', ['$scope', '$routeParams', 'FeriasFactory', 'FuncionariosFactory' , '$location',
+  function ($scope, $routeParams, FeriasFactory, FuncionariosFactory, $location) {
 
+    $scope.funcionarios = FuncionariosFactory.query();
     /* callback for ng-click 'updateFerias': */
     $scope.updateFerias = function () {
-      FeriasFactory.update($scope.signin);
+      FeriasFactory.update($scope.ferias);
       $location.path('ferias-list');
     };
 
@@ -224,9 +233,10 @@ app.controller('FeriasDetailCtrl', ['$scope', '$routeParams', 'FeriasFactory', '
     $scope.ferias = FeriasFactory.show({ id: $routeParams.id });
   }]);
 
-app.controller('FeriasCreationCtrl', ['$scope', 'FeriassFactory', '$location',
-  function ($scope, FeriassFactory, $location) {
+app.controller('FeriasCreationCtrl', ['$scope', 'FeriassFactory', 'FuncionariosFactory', '$location',
+  function ($scope, FeriassFactory, FuncionariosFactory, $location) {
 
+    $scope.funcionarios = FuncionariosFactory.query();
     /* callback for ng-click 'createNewFerias': */
     $scope.createNewFerias = function () {
       FeriassFactory.create($scope.ferias);

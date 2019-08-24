@@ -4,6 +4,7 @@
             <tr>
                 <th style="min-width: 80px;">Id</th>
                 <th style="min-width: 80px;">Nome</th>
+                <th style="min-width: 80px;">Funcionarios</th>
                 <th style="width:20px;">&nbsp;</th>
                 <th style="width:20px;">&nbsp;</th>
             </tr>
@@ -12,6 +13,7 @@
             <tr ng-repeat="e in equipes">
                 <td>{{ e.id }}</td>
                 <td>{{ e.nome }}</td>
+                <td>{{ e.listFuncionario }}</td>
                 <td><a ng-click="editEquipe(e.id)" class="btn btn-small btn-primary">edit</a></td>
                 <td><a ng-click="deleteEquipe(e.id)" class="btn btn-small btn-danger">delete</a></td>
             </tr>

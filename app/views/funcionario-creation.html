@@ -10,10 +10,53 @@
       </div>
     </div>
     <div class="control-group">
+      <label class="control-label" for="inputRua">Rua:</label>
+
+      <div class="controls">
+        <input type="text" id="inputRua" ng-model="funcionario.endereco.rua" placeholder="Rua" />
+      </div>
+    </div>
+    <div class="control-group">
+      <label class="control-label" for="inputNumero">Numero:</label>
+
+      <div class="controls">
+        <input type="text" id="inputNumero" ng-model="funcionario.endereco.numero" placeholder="Numero" />
+      </div>
+    </div>
+    <div class="control-group">
+      <label class="control-label" for="inputComplemento">Complemento:</label>
+
+      <div class="controls">
+        <input type="text" id="inputComplemento" ng-model="funcionario.endereco.complemento"
+          placeholder="Complemento" />
+      </div>
+    </div>
+    <div class="control-group">
+      <label class="control-label" for="inputBairro">Bairro:</label>
+
+      <div class="controls">
+        <input type="text" id="inputBairro" ng-model="funcionario.endereco.bairro" placeholder="Bairro" />
+      </div>
+    </div>
+    <div class="control-group">
+      <label class="control-label" for="inputCidade">Cidade:</label>
+
+      <div class="controls">
+        <input type="text" id="inputCidade" ng-model="funcionario.endereco.cidade" placeholder="Cidade" />
+      </div>
+    </div>
+    <div class="control-group">
+      <label class="control-label" for="inputEstado">Estado:</label>
+
+      <div class="controls">
+        <input type="text" id="inputEstado" ng-model="funcionario.endereco.estado" placeholder="Estado" />
+      </div>
+    </div>
+    <div class="control-group">
       <label class="control-label" for="inputDataDeNascimento">Data De Nascimento:</label>
 
       <div class="controls">
-        <input type="date" id="inputDataDeNascimento" ng-model="funcionario.dataDeNascimento"
+        <input type="text" id="inputDataDeNascimento" ng-model="funcionario.dataDeNascimento"
           placeholder="Data de Nascimento" />
       </div>
     </div>
@@ -21,7 +64,7 @@
       <label class="control-label" for="inputDataDeContratacao">Data De Contratacao:</label>
 
       <div class="controls">
-        <input type="date" id="inputDataDeContratacao" ng-model="funcionario.dataDeContratacao"
+        <input type="text" id="inputDataDeContratacao" ng-model="funcionario.dataDeContratacao"
           placeholder="Data de Contratacao" />
       </div>
     </div>
@@ -29,8 +72,8 @@
       <label class="control-label" for="inputEquipe">Equipe:</label>
 
       <div class="controls">
-        <select name="repeatSelect" id="inputEquipe" ng-model="funcionario.equipe">
-          <option ng-repeat="e in equipe" value="{{e.id}}">{{e.nome}}</option>
+        <select name="repeatSelect" id="inputEquipe" ng-model="funcionario.equipe.id">
+          <option ng-repeat="e in equipes" value="{{e.id}}">{{e.nome}}</option>
         </select>
       </div>
     </div>

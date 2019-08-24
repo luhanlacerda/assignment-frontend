@@ -14,6 +14,8 @@
         <tr ng-repeat="f in feriass">
           <td>{{ f.id }}</td>
           <td>{{ f.funcionario.nome }}</td>
+          <td>{{ f.periodoInicial }}</td>
+          <td>{{ f.periodoFinal }}</td>
           <td><a ng-click="editFerias(f.id)" class="btn btn-small btn-primary">edit</a></td>
           <td><a ng-click="deleteFerias(f.id)" class="btn btn-small btn-danger">delete</a></td>
         </tr>
