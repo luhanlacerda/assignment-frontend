@@ -63,3 +63,9 @@ services.factory('FeriasFactory', function ($resource) {
     delete: { method: 'DELETE', params: { id: '@id' } }
   });
 });
+
+services.factory('LoginFactory', function ($resource) {
+  return $resource(baseUrl + '/login', {}, {
+    create: { method: 'POST', isArray: true }
+  });
+});

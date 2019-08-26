@@ -6,6 +6,7 @@ angular.module('assignmentApp', [
   'assignmentApp.controllers'
 ])
   .config(function ($routeProvider, $httpProvider) {
+    $routeProvider.when('/login', { templateUrl: '../views/login.html', controller: 'LoginCtrl' });
     $routeProvider.when('/signin-list', { templateUrl: '../views/signin-list.html', controller: 'SigninListCtrl' });
     $routeProvider.when('/signin-detail/:id', { templateUrl: '../views/signin-detail.html', controller: 'SigninDetailCtrl' });
     $routeProvider.when('/signin-creation', { templateUrl: '../views/signin-creation.html', controller: 'SigninCreationCtrl' });

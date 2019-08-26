@@ -106,7 +106,7 @@ app.controller('FuncionarioListCtrl', ['$scope', 'FuncionariosFactory', 'Funcion
 app.controller('FuncionarioDetailCtrl', ['$scope', '$routeParams', 'FuncionarioFactory', 'EquipesFactory', '$location',
   function ($scope, $routeParams, FuncionarioFactory, EquipesFactory, $location) {
 
-    $scope.equipes = EquipesFactory.query();    
+    $scope.equipes = EquipesFactory.query();
     /* callback for ng-click 'updateFuncionario': */
     $scope.updateFuncionario = function () {
       FuncionarioFactory.update($scope.funcionario);
@@ -215,7 +215,7 @@ app.controller('FeriasListCtrl', ['$scope', 'FeriassFactory', 'FeriasFactory', '
     $scope.feriass = FeriassFactory.query();
   }]);
 
-app.controller('FeriasDetailCtrl', ['$scope', '$routeParams', 'FeriasFactory', 'FuncionariosFactory' , '$location',
+app.controller('FeriasDetailCtrl', ['$scope', '$routeParams', 'FeriasFactory', 'FuncionariosFactory', '$location',
   function ($scope, $routeParams, FeriasFactory, FuncionariosFactory, $location) {
 
     $scope.funcionarios = FuncionariosFactory.query();
@@ -243,3 +243,38 @@ app.controller('FeriasCreationCtrl', ['$scope', 'FeriassFactory', 'FuncionariosF
       $location.path('/ferias-list');
     };
   }]);
+
+app.controller('LoginCtrl', ['$scope', 'LoginFactory', '$location',
+  function ($scope, LoginFactory, $location) {
+    
+    console.log(this.window.localStorage);
+    $scope.submit = function () {
+      console.log("teste");
+      console.log(window.localStorage);
+      // LoginFactory.create($scope.signin);
+      this.http.post('/login', $scope.signin)
+        .success(function (response) {
+          // login successful if there's a token in the response
+          if (response.token) {
+            // store username and token in local storage to keep user logged in between page refreshes
+            window.localStorage.setItem({ username: signin.email, token: response.token });
+            
+            // add jwt token to auth header for all requests made by the $http service
+            this.http.defaults.headers.common.Authorization = 'Bearer ' + response.token;
+            
+            // execute callback with true to indicate successful login
+            callback(true);
+          } else {
+            // execute callback with false to indicate failed login
+            callback(false);
+          }
+          console.log(window.localStorage);
+          // $location.path('/signin-list');
+        });
+      };
+      /* callback for ng-click 'createNewFerias': */
+      // $scope.createNewFerias = function () {
+      //   FeriassFactory.create($scope.ferias);
+      //   $location.path('/ferias-list');
+      // };
+    }]);
